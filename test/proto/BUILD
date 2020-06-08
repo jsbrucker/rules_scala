@@ -22,12 +22,13 @@ scala_proto_toolchain(
         "//test/proto:blacklisted_proto",
         "//test/proto:other_blacklisted_proto",
     ],
-    extra_generator_dependencies = [
-        "//test/src/main/scala/scalarules/test/extra_protobuf_generator",
-    ],
-    named_generators = {
-        "jvm_extra_protobuf_generator": "scalarules.test.extra_protobuf_generator.ExtraProtobufGenerator",
-    },
+## The following is commented out as it was causing failures in the options tests
+#    extra_generator_dependencies = [
+#        "//test/src/main/scala/scalarules/test/extra_protobuf_generator",
+#    ],
+#    named_generators = {
+#        "jvm_extra_protobuf_generator": "scalarules.test.extra_protobuf_generator.ExtraProtobufGenerator",
+#    },
     visibility = ["//visibility:public"],
     with_flat_package = False,
     with_grpc = True,

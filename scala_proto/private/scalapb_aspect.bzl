@@ -137,6 +137,11 @@ def _scalapb_aspect_impl(target, ctx):
         toolchain = ctx.toolchains["@io_bazel_rules_scala//scala_proto:toolchain_type"]
         flags = []
         imps = [j[JavaInfo] for j in ctx.attr._implicit_compile_deps]
+        data_deps = []
+        for d in ctx.rule.attr.data:
+            if JavaInfo in d:
+                data_deps.append(d[JavaInfo])
+        imps.extend(data_deps)
 
         if toolchain.with_grpc:
             flags.append("grpc")

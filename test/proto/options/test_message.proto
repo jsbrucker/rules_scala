@@ -1,0 +1,14 @@
+syntax = "proto2";
+
+import "scalapb/scalapb.proto";
+
+option (scalapb.options) = {
+  scope: FILE
+  flat_package: true
+  single_file: true
+};
+
+message TestMessage {
+    option (scalapb.message).extends = "SomeTrait";
+    required int32 test_int = 1 [(scalapb.field).type = "SomeInt"];
+}
